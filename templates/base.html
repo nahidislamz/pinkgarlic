@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%block title%} {%endblock title%} {%load static%}
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sacramento&display=swap"
+    />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <!--Navbar -->
+      <nav
+        class="mb-0 navbar navbar-expand-lg navbar-dark secondary-color pink lighten-1"
+      >
+        <a class="navbar-brand" href="#">Pink Garlic</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent-555"
+          aria-controls="navbarSupportedContent-555"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Gallary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light"
+                >1
+                <i class="fas fa-cart-plus"></i>
+              </a>
+            </li>
+            <li class="nav-item avatar dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink-55"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  width="30"
+                  src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  class="rounded-circle z-depth-0"
+                  alt="avatar image"
+                />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                aria-labelledby="navbarDropdownMenuLink-55"
+              >
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Orders</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!--/.Navbar -->
+    </header>
+    {%block content%} {%endblock content%}
+
+    <!--JavaScript-->
+    {%load static%}
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/popper.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.min.js' %}"
+    ></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  </body>
+</html>

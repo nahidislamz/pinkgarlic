@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+section {
+  overflow: hidden;
+}
+/*Navbar Section*/
+.navbar-brand {
+  font-family: "Sacramento", cursive;
+  font-weight: 600;
+  padding: 10px;
+  margin-right: 130px;
+}
+
+/*Carousel Section*/
+.carousel-item img {
+  overflow: hidden;
+  height: 520px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  padding-bottom: 250px !important;
+}
+
+.carousel-caption h5 {
+  font-size: 35px !important;
+  color: #ffffff !important;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  font-family: "Satisfy", cursive;
+}
+
+.carousel-caption p {
+  font-size: 20px !important;
+  color: #d9d9d9 !important;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  font-family: "Raleway", sans-serif;
+}
+
+.carousel-item .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.7;
+}
+
+/*about section*/
+.about,
+.menus {
+  padding: 50px;
+}
+section h1,
+section h2 {
+  font-weight: 600;
+  padding-bottom: 10px;
+  color: #e91e63;
+}
+.about div {
+  padding-top: 10px;
+}
