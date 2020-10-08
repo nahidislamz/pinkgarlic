@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block title %}
+<title>Sign Up</title>
+{% endblock title %} {% block content %}
+<style>
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 95%;
+    border: 2px solid #dadada;
+  }
+</style>
+<div class="card login">
+  <form class="border border-light p-5" method="POST">
+    <p class="text-center h4 mb-4">Sign Up</p>
+    {% csrf_token%}
+    <p>Username</p>
+    {{form.username}}
+    <p>E-mail</p>
+    {{form.email}}
+    <p>Password</p>
+    {{form.password1}}
+    <p>Confirm Password</p>
+    {{form.password2}}
+
+    <!-- Sign in button -->
+    <button class="btn btn-pink btn-block my-4" type="submit">Sign Up</button>
+
+    <!-- Register -->
+    <p class="text-center">
+      Already a member?
+      <a href="{% url 'login' %}">Login</a>
+    </p>
+  </form>
+</div>
+{% endblock content %}

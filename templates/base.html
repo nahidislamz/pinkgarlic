@@ -10,11 +10,11 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sacramento&display=swap"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Black+Ops+One&display=swap"
     />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" />
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
     <header>
@@ -53,6 +53,7 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link waves-effect waves-light"
                 >1
@@ -80,15 +81,88 @@
               >
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Orders</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light"
+                ><button
+                  style="border-radius: 40px"
+                  type="button"
+                  class="btn btn-light"
+                >
+                  Sign Up
+                </button>
+              </a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
       <!--/.Navbar -->
     </header>
     {%block content%} {%endblock content%}
+    <!-- Footer -->
+    <footer class="page-footer font-small pink darken-3">
+      <!-- Footer Elements -->
+      <div class="container">
+        <!-- Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-12 py-5">
+            <div class="mb-5 flex-center">
+              <!-- Facebook -->
+              <a class="fb-ic">
+                <i
+                  class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"
+                >
+                </i>
+              </a>
+              <!-- Twitter -->
+              <a class="tw-ic">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+              <!-- Google +-->
+              <a class="gplus-ic">
+                <i
+                  class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"
+                >
+                </i>
+              </a>
+              <!--Linkedin -->
+              <a class="li-ic">
+                <i
+                  class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"
+                >
+                </i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+              <!--Pinterest-->
+              <a class="pin-ic">
+                <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+              </a>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+      </div>
+      <!-- Footer Elements -->
 
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="/"> pinkgalric.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
     <!--JavaScript-->
     {%load static%}
     <script

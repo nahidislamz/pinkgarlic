@@ -7,7 +7,7 @@ section {
 }
 /*Navbar Section*/
 .navbar-brand {
-  font-family: "Sacramento", cursive;
+  font-family: "Black Ops One", cursive;
   font-weight: 600;
   padding: 10px;
   margin-right: 130px;
@@ -63,4 +63,16 @@ section h2 {
 }
 .about div {
   padding-top: 10px;
+}
+.login {
+  width: 30%;
+  margin: 1%;
+  left: 35%;
+}
+@media screen and (max-width: 930px) {
+  .login {
+    left: 1%;
+    width: 95%;
+    margin: 2%;
+  }
 }
