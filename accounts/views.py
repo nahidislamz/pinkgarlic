@@ -1,27 +1,44 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, CustomerForm
+from .forms import CustomerForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User, auth
+
 # Create your views here.
 
 
 def registerPage(request):
 
-    form = CreateUserForm()
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            usergroup = form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for '+username)
+        first_name = request.POST['fname']
+        last_name = request.POST['lname']
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        email = request.POST['email']
 
-            return redirect('login')
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, 'Username Taken')
+                return redirect('register')
+            elif User.objects.filter(email=email).exists():
+                messages.info(request, 'Email Taken')
+                return redirect('register')
+            else:
+                user = User.objects.create_user(
+                    username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user.save()
+                print('user created')
+                return redirect('login')
 
-    context = {'form': form}
-    return render(request, 'register.html', context)
+        else:
+            messages.info(request, 'password not matching..')
+            return redirect('register')
+        return redirect('/')
+
+    else:
+        return render(request, 'register.html')
 
 
 def loginPage(request):

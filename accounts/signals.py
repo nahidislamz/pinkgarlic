@@ -10,7 +10,8 @@ def customer_profile(sender, instance, created, **kwargs):
         instance.groups.add(group)
         Customer.objects.create(
             user=instance,
-            name=instance.username,
+            first_name=instance.first_name,
+            last_name=instance.last_name,
             email=instance.email,
         )
 

@@ -1,46 +1,93 @@
 {% extends 'base.html' %} {% block title %}
 <title>Sign Up</title>
 {% endblock title %} {% block content %}
-<style>
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    border: none;
-    color: #2c2c2c;
-    text-align: left;
-    font-size: 16px;
-    margin: 5px;
-    width: 95%;
-    border-radius: 4px;
-    padding: 6px;
-    outline: none;
-    border: 1px solid #dadada;
-  }
-</style>
-<div class="card login">
-  <form class="border border-light p-5" method="POST">
-    <p class="text-center h4 mb-4">Sign Up</p>
-    {% csrf_token%} {{form.username}} {{form.email}} {{form.password1}}
-    {{form.password2}}
 
-    <!-- Sign in button -->
-    <button class="btn btn-pink btn-block my-4" type="submit">Sign Up</button>
-    {% for message in messages%}
-    <p class="text-center text-danger" id="messages">{{message}}</p>
-    {% endfor %}
-    <!-- Register -->
-    <p class="text-center">
+<div class="card login">
+  <!-- Default form register -->
+  <form class="text-center border border-light p-5" method="POST">
+    {% csrf_token%}
+    <p class="h4 mb-4">Sign up</p>
+
+    <div class="form-row mb-4">
+      <div class="col">
+        <!-- First name -->
+        <input
+          type="text"
+          id="defaultRegisterFormFirstName"
+          class="form-control"
+          name="fname"
+          placeholder="First name"
+        />
+      </div>
+      <div class="col">
+        <!-- Last name -->
+        <input
+          type="text"
+          id="defaultRegisterFormLastName"
+          class="form-control"
+          name="lname"
+          placeholder="Last name"
+        />
+      </div>
+    </div>
+
+    <!-- E-mail -->
+    <input
+      type="email"
+      id="defaultRegisterFormEmail"
+      class="form-control mb-4"
+      name="email"
+      placeholder="E-mail"
+    />
+
+    <input
+      type="text"
+      id="defaultRegisterFormEmail"
+      class="form-control mb-4"
+      name="username"
+      placeholder="Username"
+    />
+
+    <!-- Password -->
+    <input
+      type="password"
+      id="defaultRegisterFormPassword"
+      class="form-control"
+      placeholder="Password"
+      name="password1"
+      aria-describedby="defaultRegisterFormPasswordHelpBlock"
+    />
+    <small
+      id="defaultRegisterFormPasswordHelpBlock"
+      class="form-text text-muted mb-4"
+    >
+      At least 8 characters and 1 digit
+    </small>
+
+    <!-- Phone number -->
+    <input
+      type="password"
+      id="defaultRegisterFormPassword"
+      class="form-control"
+      placeholder="Confirm Password"
+      name="password2"
+      aria-describedby="defaultRegisterFormPasswordHelpBlock"
+    />
+    <!-- Sign up button -->
+    <button class="btn btn-pink my-4 btn-block" type="submit">Sign Up</button>
+
+    <!-- Terms of service -->
+    <p>
+      By clicking <em> Sign up </em> you agree to our
+      <a href="" target="_blank">terms of service</a>
+    </p>
+    <p>
       Already a member?
       <a href="{% url 'login' %}">Login</a>
     </p>
   </form>
+
+  <!-- Default form register -->
 </div>
 
-<script>
-  var form_fields = document.getElementsByTagName("input");
-  form_fields[1].placeholder = "Username";
-  form_fields[2].placeholder = "Email";
-  form_fields[3].placeholder = "Enter password";
-  form_fields[4].placeholder = "Re-enter Password";
-</script>
 {% endblock content %}
