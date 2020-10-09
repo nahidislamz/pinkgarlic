@@ -5,34 +5,29 @@
   input[type="text"],
   input[type="email"],
   input[type="password"] {
-    background-color: #f6f6f6;
     border: none;
-    color: #0d0d0d;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    color: #2c2c2c;
+    text-align: left;
     font-size: 16px;
     margin: 5px;
     width: 95%;
-    border: 2px solid #dadada;
+    border-radius: 4px;
+    padding: 6px;
+    outline: none;
+    border: 1px solid #dadada;
   }
 </style>
 <div class="card login">
   <form class="border border-light p-5" method="POST">
     <p class="text-center h4 mb-4">Sign Up</p>
-    {% csrf_token%}
-    <p>Username</p>
-    {{form.username}}
-    <p>E-mail</p>
-    {{form.email}}
-    <p>Password</p>
-    {{form.password1}}
-    <p>Confirm Password</p>
+    {% csrf_token%} {{form.username}} {{form.email}} {{form.password1}}
     {{form.password2}}
 
     <!-- Sign in button -->
     <button class="btn btn-pink btn-block my-4" type="submit">Sign Up</button>
-
+    {% for message in messages%}
+    <p class="text-center text-danger" id="messages">{{message}}</p>
+    {% endfor %}
     <!-- Register -->
     <p class="text-center">
       Already a member?
@@ -40,4 +35,12 @@
     </p>
   </form>
 </div>
+
+<script>
+  var form_fields = document.getElementsByTagName("input");
+  form_fields[1].placeholder = "Username";
+  form_fields[2].placeholder = "Email";
+  form_fields[3].placeholder = "Enter password";
+  form_fields[4].placeholder = "Re-enter Password";
+</script>
 {% endblock content %}

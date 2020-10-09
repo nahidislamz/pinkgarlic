@@ -70,7 +70,7 @@
               >
                 <img
                   width="30"
-                  src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  src="{{request.user.customer.profile_pic.url}}"
                   class="rounded-circle z-depth-0"
                   alt="avatar image"
                 />
@@ -79,14 +79,16 @@
                 class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55"
               >
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                 <a class="dropdown-item" href="#">Orders</a>
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link waves-effect waves-light"
+              <a
+                href="{% url 'register' %}"
+                class="nav-link waves-effect waves-light"
                 ><button
                   style="border-radius: 40px"
                   type="button"

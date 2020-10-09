@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block title %}
+<title>Profile</title>
+{% endblock title %} {% block content %}
+<div class="login card">
+  <style>
+    input[type="text"],
+    input[type="email"] {
+      margin: 0%;
+      padding: 0;
+      border: none;
+      text-align: left;
+      left: 0;
+      width: 95%;
+      background-color: transparent;
+    }
+    input[type="text"],
+    input[type="email"]:focus {
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+    input[type="file"] {
+      outline: none;
+      border-bottom: 2px solid #e91e63;
+      background: rgb(218, 218, 218);
+      display: inline;
+    }
+  </style>
+  <form class="text-center border border-light p-5" method="POST">
+    {% load static %} {% csrf_token %}
+    <img
+      src="{{request.user.customer.profile_pic.url}}"
+      alt="avatar"
+      class="rounded-circle img-responsive"
+    />
+    <div class="form-row mb-4">
+      <div class="col">
+        <!-- First name -->
+        <div id="" class="form-control text-left">{{form.name}}</div>
+      </div>
+      <div class="col">
+        <div id="" class="form-control text-left">{{form.name}}</div>
+      </div>
+    </div>
+
+    <!-- Email  -->
+    <div id="" class="mb-4 form-control text-left">{{form.email}}</div>
+    <!-- Phone number -->
+    <div id="" class="mb-4 form-control text-left">{{form.phone}}</div>
+
+    <div class="mt-4 input-group">
+      <div class="text-center">{{form.profile_pic}}</div>
+    </div>
+    <input class="btn btn-pink my-4 btn-block" value="Update" type="submit" />
+  </form>
+</div>
+<script>
+  var form_fields = document.getElementsByTagName("input");
+  form_fields[3].readOnly = true;
+</script>
+{% endblock content %}

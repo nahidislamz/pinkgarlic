@@ -44,7 +44,9 @@
 
     <!-- Sign in button -->
     <button class="btn btn-pink btn-block my-4" type="submit">Sign in</button>
-
+    {% for message in messages%}
+    <p class="text-danger text-center">{{message}}</p>
+    {% endfor %}
     <!-- Register -->
     <p>
       Not a member?
