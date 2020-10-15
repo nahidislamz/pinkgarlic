@@ -54,13 +54,13 @@
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
             {% if user.is_authenticated %}
-            <li class="nav-item">
+            <li class="nav-item p-1">
               <a class="nav-link waves-effect waves-light"
                 >1
                 <i class="fas fa-cart-plus"></i>
               </a>
             </li>
-            <li class="nav-item avatar dropdown">
+            <li class="nav-item avatar dropdown p-1">
               <a
                 class="nav-link dropdown-toggle"
                 id="navbarDropdownMenuLink-55"
@@ -90,7 +90,7 @@
                 href="{% url 'register' %}"
                 class="nav-link waves-effect waves-light"
                 ><button
-                  style="border-radius: 40px"
+                  style="border-radius: 40px; padding: 4px 8px"
                   type="button"
                   class="btn btn-light"
                 >
