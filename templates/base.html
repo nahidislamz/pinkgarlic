@@ -53,10 +53,12 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated %} {% load cart_tag %}
             <li class="nav-item p-1">
-              <a class="nav-link waves-effect waves-light"
-                >1
+              <a
+                href="{% url 'cart' %}"
+                class="nav-link waves-effect waves-light"
+                >{{ request.user.customer | cart_count }}
                 <i class="fas fa-cart-plus"></i>
               </a>
             </li>
@@ -79,9 +81,15 @@
                 class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55"
               >
-                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                <a class="dropdown-item" href="#">Orders</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'profile' %}"
+                  ><i class="fas fa-user"></i> Profile</a
+                >
+                <a class="dropdown-item" href="#"
+                  ><i class="fas fa-list"></i> Orders</a
+                >
+                <a class="dropdown-item" href="{% url 'logout' %}"
+                  ><i class="fas fa-power-off"></i> Logout</a
+                >
               </div>
             </li>
             {% else %}

@@ -4,14 +4,7 @@
 <section id="menu" class="menus">
   <h1 class="h1-responsive font-weight-bold text-center my-4">Menus</h1>
   {% for message in messages%}
-  <p
-    style="border-radius: 20px"
-    class="text-center bg-{{message.tags}}"
-    style="color: brown"
-    id="messages"
-  >
-    {{message}}
-  </p>
+  <div class="alert alert-secondary" role="alert">{{message}}</div>
   {% endfor %}
   <div class="card">
     <table id="tablePreview" class="table">
@@ -27,7 +20,7 @@
       <tbody>
         {% for i in menus %}
         <tr>
-          <th scope="row">1</th>
+          <th scope="row">{{i.id}}</th>
           <td>
             <h5>{{i.title}}</h5>
             <p>{{i.description}}</p>
@@ -35,11 +28,11 @@
           <td>£{{i.price}}</td>
           <td>
             {% if user.is_authenticated %}
-            <a href="" class="btn btn-pink px-3">
+            <a href="{% url 'cart' i.id %}" class="btn btn-pink px-4 p-1">
               <i class="fas fa-cart-plus" aria-hidden="true"></i>
             </a>
             {% else %}
-            <a href="{% url 'login'%}" class="btn btn-red px-3">
+            <a href="{% url 'login'%}" class="btn btn-red px-4 p-1">
               <i class="fas fa-cart-plus" aria-hidden="true"></i>
             </a>
             {% endif %}

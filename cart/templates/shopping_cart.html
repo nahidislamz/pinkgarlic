@@ -1,0 +1,95 @@
+{% extends "base.html" %} {%block title%}
+<title>Pink Garlic</title>
+{%endblock %} {%block content%} {% load static %}
+
+<section class="section">
+  <h1 class="h1-responsive font-weight-bold text-center mt-4">Your Cart</h1>
+  {% for message in messages%}
+  <div class="alert alert-secondary" role="alert">{{message}}</div>
+  {% endfor %}
+  <div class="card mb-5 mr-5 ml-5 pb-1 animated bounce">
+    <div class="card-body">
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+        <table class="table product-table">
+          <thead class="text-white pink">
+            <tr>
+              <th class="font-weight-bold">
+                <strong>Product</strong>
+              </th>
+
+              <th class="font-weight-bold">
+                <strong>Price</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>QTY</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Amount</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in cart %}
+            <tr>
+              <th scope="row">
+                <h5 class="mt-0">
+                  <strong>{{i.item}}</strong>
+                </h5>
+              </th>
+              <td>{{i.item.price}}</td>
+              <td class="text-center text-md-left">
+                <span class="qty">{{i.quantity}} </span>
+                <div class="btn-group radio-group ml-4" data-toggle="buttons">
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-light lighten-2 minus btn-rounded waves-effect waves-light px-2 mr-1 p-1"
+                  >
+                    <i class="fas fa-minus"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-light btn-rounded waves-effect waves-light px-2 ml-.5 p-1"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </div>
+              </td>
+              <td class="font-weight-bold">
+                ${{ i.getCart_total }}
+                <button
+                  type="button"
+                  class="ml-4 btn btn-sm btn-red p-1 px-2"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title=""
+                  data-original-title="Remove item"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+            <tr>
+              <th scope="row"></th>
+              <td colspan="2"><strong>Total</strong></td>
+              <td class="font-weight-bold">
+                {{order.getOrder_total| floatformat:2}}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td colspan="3" class="text-right">
+                <a href="{% url 'menu' %}" class="btn btn-warning mr-4"
+                  >Go Back To Menu</a
+                >
+                <a class="btn btn-success mr-4" href="">Proceed To Checkout</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock content%}

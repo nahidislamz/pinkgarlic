@@ -1,0 +1,15 @@
+{% extends "base.html" %} {%block title%}
+<title>Pink Garlic</title>
+{%endblock %} {%block content%} {% load static %}
+
+<section class="section text-center">
+  <div class="card animated bounceIn">
+    <div class="card-body">
+      <img width="290" src="{%static 'images/cart_empty.png' %}" />
+      <div>
+        <a href="{% url 'menu' %}" class="btn btn-pink">View Menus</a>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock content%}

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     'menus.apps.MenusConfig',
+    'cart.apps.CartConfig'
 ]
 
 MIDDLEWARE = [
