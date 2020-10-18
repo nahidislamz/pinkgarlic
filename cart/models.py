@@ -4,7 +4,6 @@ from menus.models import Menu
 
 
 class Cart(models.Model):
-    #id = models.ObjectField()
     item = models.ForeignKey(Menu, null=True, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, null=True, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)

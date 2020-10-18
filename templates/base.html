@@ -20,9 +20,11 @@
     <header>
       <!--Navbar -->
       <nav
-        class="mb-0 fixed-top navbar navbar-expand-lg navbar-dark secondary-color pink lighten-1"
+        class="animated fadeInDown mb-0 fixed-top navbar navbar-expand-lg navbar-dark secondary-color pink lighten-1"
       >
-        <a class="navbar-brand" href="#">Pink Garlic</a>
+        <a class="animated delay-2s wobble navbar-brand" href="#"
+          >Pink Garlic</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -57,9 +59,12 @@
             <li class="nav-item p-1">
               <a
                 href="{% url 'cart' %}"
-                class="nav-link waves-effect waves-light"
-                >{{ request.user.customer | cart_count }}
-                <i class="fas fa-cart-plus"></i>
+                class="animated bounce delay-4s nav-link waves-effect waves-light"
+              >
+                <span class="badge badge-pill badge-warning"
+                  >{{ request.user.customer | cart_count }}</span
+                >
+                <i style="font-size: 20px" class="fas fa-cart-plus"></i>
               </a>
             </li>
             <li class="nav-item avatar dropdown p-1">

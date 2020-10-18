@@ -50,3 +50,63 @@ def add_to_cart(request, id):
         order.orderitems.add(order_item)
         messages.info(request, f"{item.title}  was added to your cart")
         return redirect("menu")
+
+
+def increaseItem(request, id):
+
+    item = get_object_or_404(Menu, id=id)
+    order_item, created = Cart.objects.get_or_create(
+        item=item,
+        customer=request.user.customer,
+        purchased=False
+    )
+    order_qs = Order.objects.filter(
+        customer=request.user.customer, ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.orderitems.filter(item__id=item.id).exists():
+            order_item.quantity += 1
+            order_item.save()
+            messages.info(request, f"{item.title} quantity has updated.")
+            return redirect("cart")
+
+        else:
+            order.orderitems.add(order_item)
+            return redirect("cart")
+    else:
+        order = Order.objects.create(
+            customer=request.user.customer)
+        order.orderitems.add(order_item)
+        return redirect("cart")
+
+
+def decreaseItem(request, id):
+    item = get_object_or_404(Menu, id=id)
+    order_qs = Order.objects.filter(
+        customer=request.user.customer,
+        ordered=False
+    )
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.orderitems.filter(item__id=item.id).exists():
+            order_item = Cart.objects.filter(
+                item=item,
+                customer=request.user.customer,
+                purchased=False
+            )[0]
+            if order_item.quantity > 1:
+                order_item.quantity -= 1
+                order_item.save()
+            else:
+                order.orderitems.remove(order_item)
+                order_item.delete()
+            messages.info(request, f"{item.title} has been removed.")
+            return redirect("cart")
+        else:
+            messages.info(request, f"{item.title} quantity has updated.")
+            return redirect("cart")
+    else:
+        messages.error(request, "You do not have an active order")
+        return redirect("cart")

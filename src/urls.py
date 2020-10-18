@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from home.views import homeView
 from menus.views import menuPage
-from cart.views import cartView
+
 
 admin.site.site_header = 'Pink Garlic Admin Panel'
 admin.site.site_title = 'Admin Panel'
