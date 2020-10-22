@@ -103,6 +103,12 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = (
     (BASE_DIR / 'static/images')
 )
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'nahidislam927@gmail.com'
+EMAIL_HOST_PASSWORD = 'YouR_pAssWorD'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_x0a3VuPvX5kedZC5InT5M4tY00ddR41quZ'
 STRIPE_SECRET_KEY = 'sk_test_m5CoYUu63mOtAiuFCWO4JAEH006sw6ZimR'
