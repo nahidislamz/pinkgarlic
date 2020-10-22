@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import BillingAddress
 from .form import BillingForm
 from cart.models import Order, Cart
@@ -15,10 +15,14 @@ def checkout(request):
 
     order_qs = Order.objects.filter(
         customer=request.user.customer, ordered=False)
+
     order_items = order_qs[0].orderitems.all()
+
     order_total = order_qs[0].getOrder_total()
+
     context = {"form": form, "order_items": order_items,
                "order_total": order_total, 'cart': cart}
+
     # Getting the saved saved_address
     saved_address = BillingAddress.objects.filter(
         customer=request.user.customer)
@@ -43,6 +47,7 @@ def checkout(request):
                 billingaddress = form.save(commit=False)
                 billingaddress.customer = request.user.customer
                 billingaddress.save()
+                return redirect('checkout')
 
     return render(request, 'checkout_address.html', context)
 

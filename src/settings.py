@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'checkout.apps.CheckoutConfig',
     'crispy_forms',
 ]
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
