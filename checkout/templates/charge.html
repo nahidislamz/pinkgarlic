@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{%load static %}
+<div class="container mt-5 mb-5 text-center">
+  <br />
+  <h2 class="text-center">Thanks,for your Orders</h2>
+  <img
+    src="{% static 'images/happy.png' %}"
+    class="img-fluid"
+    width="500"
+    alt="Responsive image"
+  />
+  <br />
+  <a href="{% url 'orders' %}" class="mt-2 btn btn-dark">View Active Orders</a>
+</div>
+{% endblock %}

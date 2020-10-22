@@ -23,9 +23,11 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     'menus.apps.MenusConfig',
-    'cart.apps.CartConfig'
+    'cart.apps.CartConfig',
+    'checkout.apps.CheckoutConfig',
+    'crispy_forms',
 ]
-
+CRISPY_TEMPLATE_PACK = 'uni_form'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,3 +103,6 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = (
     (BASE_DIR / 'static/images')
 )
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_x0a3VuPvX5kedZC5InT5M4tY00ddR41quZ'
+STRIPE_SECRET_KEY = 'sk_test_m5CoYUu63mOtAiuFCWO4JAEH006sw6ZimR'

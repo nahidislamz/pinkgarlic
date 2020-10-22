@@ -1,0 +1,58 @@
+{% extends "base.html" %} {%block title%}
+<title>Pink Garlic</title>
+{%endblock %} {%block content%} {% load static %}
+
+<section class="section">
+  <h1 class="h1-responsive font-weight-bold text-center mt-4">Your Orders</h1>
+  {% for message in messages%}
+  <div
+    class="mr-5 ml-5 alert alert-secondary animated fadeOutUpBig delay-4s"
+    role="alert"
+  >
+    {{message}}
+  </div>
+  {% endfor %}
+  <div class="card mb-5 mr-5 ml-5 pb-1">
+    <div class="card-body">
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+        <table class="table product-table">
+          <thead class="text-dark light">
+            <tr>
+              <th class="font-weight-bold">
+                <strong>Order ID</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Product</strong>
+              </th>
+
+              <th class="font-weight-bold">
+                <strong>QTY</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in orders %}
+            <tr>
+              <th scope="row">
+                <h5 class="mt-0">
+                  <strong>{{ forloop.counter }}</strong>
+                </h5>
+              </th>
+              <td>
+                {% for item in i.orderitems.all %} {{ item }}
+                <br />
+                {% endfor %}
+              </td>
+              <td class="text-center text-md-left">
+                <span class="badge badge-primary">{{i.status}}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock content%}

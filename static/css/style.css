@@ -1,13 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa:wght@400;700&display=swap");
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: "Comfortaa", cursive;
 }
 body {
   padding-top: 70px;
+  background: #dedede;
 }
 section {
+  background: #dedede;
   overflow: hidden;
 }
+
 /*Navbar Section*/
 .navbar-brand {
   font-family: "Black Ops One", cursive;
@@ -79,6 +84,9 @@ section h2 {
   object-fit: cover;
   width: 150px;
   box-shadow: 0px 2px 5px 1px gray;
+}
+footer .dev a {
+  font-family: "Caveat", cursive;
 }
 @media screen and (max-width: 930px) {
   .login {

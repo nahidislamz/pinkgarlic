@@ -1,6 +1,7 @@
 from djongo import models
 from accounts.models import Customer
 from menus.models import Menu
+from checkout.models import BillingAddress
 
 
 class Cart(models.Model):
@@ -29,6 +30,7 @@ class Order(models.Model):
     )
     orderitems = models.ManyToManyField(Cart)
     customer = models.ForeignKey(Customer, null=True, on_delete=models.CASCADE)
+    address = models.ManyToManyField(BillingAddress)
     ordered = models.BooleanField(default=False)
     status = models.CharField(
         max_length=200, null=True, choices=OPTION, default=OPTION[0][0])

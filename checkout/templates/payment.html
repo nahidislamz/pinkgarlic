@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{%load static %}
+<div style="margin-top: 100px" class="container mt-5 text-center">
+  <h2>Pay with Stripe</h2>
+
+  <img
+    src="{% static 'images/visa.png' %}"
+    class="img-fluid"
+    width="550"
+    alt="Responsive image"
+  />
+  <br />
+
+  <form style="margin: 20px" action="{% url 'charge' %}" method="post">
+    {% csrf_token %}
+    <script
+      src="https://checkout.stripe.com/checkout.js"
+      class="stripe-button"
+      data-key="{{ key }}"
+      data-description="Complete your order"
+      data-amount="{{ total }}"
+      data-locale="auto"
+    ></script>
+  </form>
+</div>
+
+{% endblock %}

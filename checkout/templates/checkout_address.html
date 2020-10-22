@@ -1,0 +1,123 @@
+{% extends "base.html" %} {%block title%}
+<title>Checkout</title>
+{%endblock %} {%block content%} {% load static %}{% load crispy_forms_tags %}
+<section class="p-4">
+  <div class="container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="my-4 h2 text-center">Checkout form</h2>
+
+    <!--Grid row-->
+    <div class="row">
+      {% if savedAddress %}
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your Address</span>
+        </h4>
+        <div class="card">
+          <!--Card content-->
+          <form class="card-body">
+            <!--address-->
+            <style>
+              .address {
+                font-size: 22px;
+                color: #525252;
+              }
+                @media screen and (max-width: 930px) {
+                  .address {
+                    font-size: 18px;
+                    color: #525252;
+                  }
+                }
+              }
+            </style>
+            <div class="mb-2">
+              <div class="address">
+                <strong>Address</strong> : {{ savedAddress.address }}
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="address">
+                <strong>Phone</strong> : {{ savedAddress.phone }}
+              </div>
+            </div>
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-lg-6 col-md-6 mb-2">
+                <div class="text-lg address text">
+                  <strong>City</strong> : {{ savedAddress.city }}
+                </div>
+              </div>
+              <!--Grid column-->
+              <div class="col-lg-6 col-md-6 mb-2">
+                <div class="address">
+                  <strong>Zip Code </strong>: {{ savedAddress.zipcode }}
+                </div>
+              </div>
+              <!--Grid column-->
+            </div>
+            <a
+              class="btn btn-light btn-lg btn-block mt-4"
+              href="{% url 'payment' %}"
+            >
+              Continue to checkout
+            </a>
+          </form>
+        </div>
+        <!--/.Card-->
+      </div>
+      {% else %}
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <form class="card-body mt-4" method="POST">
+            {% csrf_token %} {{form | crispy}}
+            <button type="submit" class="btn btn-light mt-2">
+              Save Address
+            </button>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-4">
+        <!-- Heading -->
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          {% load cart_tag %}
+          <span class="badge badge-secondary badge-pill"
+            >{{ request.user.customer | cart_count }}</span
+          >
+        </h4>
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+          {% for i in cart %}
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0"><b>{{i.quantity}}</b> {{ i.item }}</h6>
+            </div>
+            <span class="text-muted">${{ i.item.price }}</span>
+          </li>
+          {% endfor%}
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$ {{ order_total | floatformat:2 }}</strong>
+          </li>
+        </ul>
+        <!-- Cart -->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</section>
+{%endblock content%}
