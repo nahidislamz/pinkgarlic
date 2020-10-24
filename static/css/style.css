@@ -93,6 +93,7 @@ section h2 {
 footer .dev a {
   font-family: "Caveat", cursive;
 }
+
 @media screen and (max-width: 930px) {
   .login {
     left: 1%;

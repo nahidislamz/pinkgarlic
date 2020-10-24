@@ -8,10 +8,6 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Black+Ops+One&display=swap"
-    />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" />
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
@@ -20,7 +16,7 @@
     <header>
       <!--Navbar -->
       <nav
-        class="animated fadeInDown mb-0 fixed-top navbar navbar-expand-lg navbar-dark pink darken-1"
+        class="mb-0 fixed-top scrolling-navbar navbar navbar-expand-lg navbar-dark pink darken-1"
       >
         <a class="animated delay-2s wobble navbar-brand" href="#"
           >Pink Garlic</a
@@ -196,5 +192,9 @@
       src="{% static 'js/bootstrap.min.js' %}"
     ></script>
     <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
   </body>
 </html>

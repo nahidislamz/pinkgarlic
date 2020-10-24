@@ -1,0 +1,89 @@
+{% extends "pgadmin.html" %} {% block admin%}
+
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-1">
+    <!-- Heading -->
+    <div class="card mb-4 wow fadeIn">
+      <!--Card content-->
+      <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">
+          <span>Category</span>
+        </h4>
+
+        <form class="d-flex justify-content-center">
+          <!-- Default input -->
+          <input
+            type="search"
+            placeholder="Type your query"
+            aria-label="Search"
+            class="form-control"
+          />
+          <button class="btn btn-primary btn-sm my-0" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <a
+          href="{% url 'addmenu' %}"
+          class="animated shake delay-2s btn btn-warning btn-sm my-1"
+          >Add New Item</a
+        >
+      </div>
+    </div>
+    <!-- Heading -->
+
+    <div class="row wow fadeIn">
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for i in menu%}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ i.title }}</td>
+                  <td>{{ i.description }}</td>
+                  <td>{{ i.price }}</td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'menu_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-danger btn-sm p-1 px-2"
+                      href="{% url 'menu_delete' i.id%}"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+    </div>
+  </div>
+</main>
+
+{% endblock %}

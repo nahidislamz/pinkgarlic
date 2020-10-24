@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'menus.apps.MenusConfig',
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
+    'pgadmin.apps.PgadminConfig',
     'crispy_forms',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -12,11 +12,13 @@ admin.site.index_title = 'Pink Garlic Administration'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pgadmin/', include('pgadmin.urls')),
     path('', homeView, name='home'),
     path('', include('accounts.urls')),
     path('menu/', menuPage, name='menu'),
     path('', include('cart.urls')),
     path('', include('checkout.urls')),
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
