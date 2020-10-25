@@ -1,6 +1,6 @@
 
-<div align="center" style="color:#ca3a67;"> 
-<h1>Project 300</h1>
+<div align="center"> 
+<h1 style="color:#cd276d;">Project 300</h1>
 </div>
 
 <center>
@@ -17,10 +17,18 @@
 
 </center>
 
-<div style="color:#ca3a67;"> <h3>Platform & Tools</h3></div>
+<div> <h3 style="color:#cd276d;">Platform & Tools</h3>
+<p style="color:grey;">
 All the technologies that will be used to develop the system are open-sourced.
 Such as :-
-<center>
+</p>
+</div>
+
+
+<br/>
+
+
+<div align="center"> 
 
 <img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
 <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
@@ -30,6 +38,5 @@ Such as :-
 <img src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
 <img src="https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/>
 
-</center>
 
-
+</div>
