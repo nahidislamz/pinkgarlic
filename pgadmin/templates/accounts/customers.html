@@ -7,7 +7,7 @@
       <!--Card content-->
       <div class="card-body d-sm-flex justify-content-between">
         <h4 class="mb-2 mb-sm-0 pt-1">
-          <span>Category</span>
+          <span>Customers</span>
         </h4>
 
         <form class="d-flex justify-content-center">
@@ -22,11 +22,6 @@
             <i class="fas fa-search"></i>
           </button>
         </form>
-        <a
-          href="{% url 'addcategory' %}"
-          class="animated shake delay-2s btn btn-warning btn-sm my-1"
-          >Add New Item</a
-        >
       </div>
     </div>
     <!-- Heading -->
@@ -44,28 +39,27 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Category Name</th>
+                  <th>Email</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Phone</th>
                 </tr>
               </thead>
 
               <tbody>
-                {% for i in category%}
+                {% for i in customer %}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ i.category }}</td>
+                  <td>{{ i.email }}</td>
+                  <td>{{ i.first_name }}</td>
+                  <td>{{ i.last_name }}</td>
+                  <td>{{ i.phone }}</td>
                   <td>
                     <a
-                      class="btn btn-secondary btn-sm p-1 px-2"
-                      href="{% url 'category_update' i.id%}"
-                      ><i class="fas fa-edit"></i
-                    ></a>
-                  </td>
-                  <td>
-                    <a
-                      class="btn btn-danger btn-sm p-1 px-2"
-                      href="{% url 'category_delete' i.id%}"
-                      ><i class="fas fa-times"></i
-                    ></a>
+                      class="btn btn-success btn-sm p-1 px-2"
+                      href="tel:{{i.phone}}"
+                      ><i class="fas fa-phone-alt"></i>
+                    </a>
                   </td>
                 </tr>
                 {% endfor %}

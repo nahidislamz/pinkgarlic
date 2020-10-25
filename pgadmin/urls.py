@@ -4,6 +4,8 @@ from .views import *
 
 urlpatterns = [
     path('', adminView, name='pgadmin'),
+    # accounts section
+    path('customers/', customerView, name='customer'),
     # menu section
     path('menuadmin/', menuAdminView, name='menuadmin'),
     path('addmenu/', menu_form, name='addmenu'),
@@ -15,4 +17,8 @@ urlpatterns = [
     path('addcategory/', category_form, name='addcategory'),
     path('addcategory/<int:id>', category_form, name='category_update'),
     path('cdelete/<int:id>', category_delete, name='category_delete'),
+
+    # Order Section
+    path('orders/', orderViewAdmin, name='ordersadmin'),
+
 ]

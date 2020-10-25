@@ -1,5 +1,4 @@
-{% extends "pgadmin.html" %} {% block admin%}
-
+{% extends "pgadmin.html" %} {%block admin%} {% load static %}
 <main class="pt-5 mx-lg-5">
   <div class="container-fluid mt-1">
     <!-- Heading -->
@@ -7,7 +6,7 @@
       <!--Card content-->
       <div class="card-body d-sm-flex justify-content-between">
         <h4 class="mb-2 mb-sm-0 pt-1">
-          <span>Category</span>
+          <span>Orders</span>
         </h4>
 
         <form class="d-flex justify-content-center">
@@ -22,11 +21,6 @@
             <i class="fas fa-search"></i>
           </button>
         </form>
-        <a
-          href="{% url 'addcategory' %}"
-          class="animated shake delay-2s btn btn-warning btn-sm my-1"
-          >Add New Item</a
-        >
       </div>
     </div>
     <!-- Heading -->
@@ -44,27 +38,31 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Category Name</th>
+                  <th>Ordered Item</th>
+                  <th>Status</th>
+                  <th>Ordered By</th>
                 </tr>
               </thead>
 
               <tbody>
-                {% for i in category%}
+                {% for i in order %}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ i.category }}</td>
+                  <td>
+                    {% for item in i.orderitems.all %} {{ item }}
+                    <br />
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <span class="badge badge-primary p-2">{{i.status}}</span>
+                  </td>
+                  <td>{{i.customer.first_name}} {{i.customer.last_name}}</td>
                   <td>
                     <a
                       class="btn btn-secondary btn-sm p-1 px-2"
-                      href="{% url 'category_update' i.id%}"
+                      href="{% url 'menu_update' i.id%}"
                       ><i class="fas fa-edit"></i
-                    ></a>
-                  </td>
-                  <td>
-                    <a
-                      class="btn btn-danger btn-sm p-1 px-2"
-                      href="{% url 'category_delete' i.id%}"
-                      ><i class="fas fa-times"></i
                     ></a>
                   </td>
                 </tr>
@@ -81,5 +79,4 @@
     </div>
   </div>
 </main>
-
-{% endblock %}
+{%endblock admin%}

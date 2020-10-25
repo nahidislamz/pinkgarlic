@@ -100,7 +100,7 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto hide_ul">
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white waves-effect">
+                            <a href="{% url 'customer' %}" class="nav-link text-white waves-effect">
                                 Accounts</a>
                         </li>
                        <li class="nav-item">
@@ -155,12 +155,12 @@
         <!-- Sidebar -->
         <div class="sidebar-fixed position-fixed pt-4">
             <div class="list-group list-group-flush">
-                <a href="{% url 'pgadmin' %}" class="list-group-item active waves-effect">
+                <a href="{% url 'pgadmin' %}" class="list-group-item active mdb-color waves-effect">
                     <i class="fas fa-chart-pie mr-3"></i>Dashboard
                 </a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="{% url 'customer' %}" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Accounts</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="{% url 'ordersadmin' %}" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-table mr-3"></i>Orders</a>
                 <a href="{% url 'menuadmin' %}" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-list mr-3"></i>Menus</a>
@@ -300,7 +300,7 @@
             },
         });
     </script>
-    <script>
+<!--<script>
         $(document).ready(function(){ 
         $('.list-group-item').on("click", function(){
         $('.list-group-item').removeClass('active');
@@ -308,7 +308,7 @@
         });
         });
 
-    </script>
+    </script>-->
 </body>
 
 </html>

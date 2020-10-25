@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from menus.models import Menu, Category
+from accounts.models import Customer
+from cart.models import Order
 from .forms import *
 # Create your views here.
 
@@ -66,3 +68,17 @@ def category_delete(request, id):
     category = Category.objects.get(id=id)
     category.delete()
     return redirect('categoryadmin')
+
+
+def customerView(request):
+    customer = Customer.objects.all()
+    return render(request, 'accounts/customers.html', {'customer': customer})
+
+
+def orderViewAdmin(request):
+
+    orders = Order.objects.all().filter(ordered=True, status='Pending')
+    context = {
+        "order": orders
+    }
+    return render(request, 'orders/order_preview.html', context)
