@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for i in orders %}
+            {% for i in pending_orders %}
             <tr>
               <th scope="row">
                 <h5 class="mt-0">
@@ -45,7 +45,136 @@
                 {% endfor %}
               </td>
               <td class="text-center text-md-left">
-                <span class="badge badge-primary">{{i.status}}</span>
+                <span class="badge badge-warning p-2">{{i.status}}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5 mr-5 ml-5 pb-1">
+    <div class="card-body">
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+        <table class="table product-table">
+          <thead class="text-dark light">
+            <tr>
+              <th class="font-weight-bold">
+                <strong>Order ID</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Product</strong>
+              </th>
+
+              <th class="font-weight-bold">
+                <strong>Status</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in delivered_orders %}
+            <tr>
+              <th scope="row">
+                <h5 class="mt-0">
+                  <strong>{{ forloop.counter }}</strong>
+                </h5>
+              </th>
+              <td>
+                {% for item in i.orderitems.all %} {{ item }}
+                <br />
+                {% endfor %}
+              </td>
+              <td class="text-center text-md-left">
+                <span class="badge badge-success p-2">{{i.status}}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5 mr-5 ml-5 pb-1">
+    <div class="card-body">
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+        <table class="table product-table">
+          <thead class="text-dark light">
+            <tr>
+              <th class="font-weight-bold">
+                <strong>Order ID</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Product</strong>
+              </th>
+
+              <th class="font-weight-bold">
+                <strong>Status</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in out_orders %}
+            <tr>
+              <th scope="row">
+                <h5 class="mt-0">
+                  <strong>{{ forloop.counter }}</strong>
+                </h5>
+              </th>
+              <td>
+                {% for item in i.orderitems.all %} {{ item }}
+                <br />
+                {% endfor %}
+              </td>
+              <td class="text-center text-md-left">
+                <span class="badge badge-secondary p-2">{{i.status}}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5 mr-5 ml-5 pb-1">
+    <div class="card-body">
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+        <table class="table product-table">
+          <thead class="text-dark light">
+            <tr>
+              <th class="font-weight-bold">
+                <strong>Order ID</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Product</strong>
+              </th>
+
+              <th class="font-weight-bold">
+                <strong>Status</strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in cancled_orders %}
+            <tr>
+              <th scope="row">
+                <h5 class="mt-0">
+                  <strong>{{ forloop.counter }}</strong>
+                </h5>
+              </th>
+              <td>
+                {% for item in i.orderitems.all %} {{ item }}
+                <br />
+                {% endfor %}
+              </td>
+              <td class="text-center text-md-left">
+                <span class="badge badge-danger p-2">{{i.status}}</span>
               </td>
             </tr>
             {% endfor %}

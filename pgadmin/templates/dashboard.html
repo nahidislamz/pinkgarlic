@@ -33,39 +33,27 @@
         <div class="card">
           <!--Card content-->
           <div class="card-body">
+            <h4 class="pt-2 pl-2">New Customer</h4>
             <!-- Table  -->
             <table class="table table-hover">
               <!-- Table head -->
-              <thead class="blue-grey lighten-4">
+              <thead>
                 <tr>
                   <th>#</th>
-                  <th>Lorem</th>
-                  <th>Ipsum</th>
-                  <th>Dolor</th>
+                  <th>Email</th>
                 </tr>
               </thead>
-              <!-- Table head -->
 
-              <!-- Table body -->
               <tbody>
+                {% for i in customer %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Cell 1</td>
-                  <td>Cell 2</td>
-                  <td>Cell 3</td>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ i.email }}</td>
+                  <td>
+                    <span class="badge badge-success p-2">New</span>
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Cell 4</td>
-                  <td>Cell 5</td>
-                  <td>Cell 6</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Cell 7</td>
-                  <td>Cell 8</td>
-                  <td>Cell 9</td>
-                </tr>
+                {% endfor %}
               </tbody>
               <!-- Table body -->
             </table>
@@ -82,39 +70,45 @@
         <div class="card">
           <!--Card content-->
           <div class="card-body">
+            <h4 class="pt-2 pl-2">New Orders</h4>
             <!-- Table  -->
             <table class="table table-hover">
               <!-- Table head -->
-              <thead class="blue lighten-4">
+              <thead>
                 <tr>
                   <th>#</th>
-                  <th>Lorem</th>
-                  <th>Ipsum</th>
-                  <th>Dolor</th>
+                  <th>Ordered Item</th>
+                  <th>Ordered By</th>
+                  <th>Status</th>
                 </tr>
               </thead>
-              <!-- Table head -->
 
-              <!-- Table body -->
               <tbody>
+                {% for i in pending_orders %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Cell 1</td>
-                  <td>Cell 2</td>
-                  <td>Cell 3</td>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                    {% for item in i.orderitems.all %} {{ item }}
+                    <br />
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
+                    <em> {{i.customer.phone}} </em>
+                  </td>
+                  <td>
+                    <span class="badge badge-warning p-2">{{i.status}} </span>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'order_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Cell 4</td>
-                  <td>Cell 5</td>
-                  <td>Cell 6</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Cell 7</td>
-                  <td>Cell 8</td>
-                  <td>Cell 9</td>
-                </tr>
+                {% endfor %}
               </tbody>
               <!-- Table body -->
             </table>

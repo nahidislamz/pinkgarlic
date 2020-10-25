@@ -27,7 +27,7 @@
 
     <div class="row wow fadeIn">
       <!--Grid column-->
-      <div class="col-md-12 mb-4">
+      <div class="col-md-6 mb-4">
         <!--Card-->
         <div class="card">
           <!--Card content-->
@@ -45,7 +45,61 @@
               </thead>
 
               <tbody>
-                {% for i in order %}
+                {% for i in delivered_orders %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                    {% for item in i.orderitems.all %} {{ item }}
+                    <br />
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
+                    <em> {{i.customer.phone}} </em>
+                  </td>
+                  <td>
+                    <span class="badge badge-success p-2">{{i.status}} </span>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'order_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Ordered Item</th>
+                  <th>Ordered By</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for i in pending_orders %}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
                   <td>
@@ -60,6 +114,116 @@
                   </td>
                   <td>
                     <span class="badge badge-primary p-2">{{i.status}} </span>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'order_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+    </div>
+
+    <div class="row wow fadeIn">
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Ordered Item</th>
+                  <th>Ordered By</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for i in out_orders %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                    {% for item in i.orderitems.all %} {{ item }}
+                    <br />
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
+                    <em> {{i.customer.phone}} </em>
+                  </td>
+                  <td>
+                    <span class="badge badge-warning p-2">{{i.status}} </span>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'order_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Ordered Item</th>
+                  <th>Ordered By</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for i in cancled_orders %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                    {% for item in i.orderitems.all %} {{ item }}
+                    <br />
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
+                    <em> {{i.customer.phone}} </em>
+                  </td>
+                  <td>
+                    <span class="badge badge-danger p-2">{{i.status}} </span>
                   </td>
                   <td>
                     <a

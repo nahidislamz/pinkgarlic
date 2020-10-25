@@ -7,7 +7,13 @@ from .forms import *
 
 
 def adminView(request):
-    return render(request, 'dashboard.html')
+    pending_orders = Order.objects.all().filter(ordered=True, status='Pending')
+    customer = Customer.objects.all()
+    context = {
+        "pending_orders": pending_orders,
+        'customer': customer
+    }
+    return render(request, 'dashboard.html', context)
 
 
 def menuAdminView(request):
@@ -77,9 +83,15 @@ def customerView(request):
 
 def orderViewAdmin(request):
 
-    orders = Order.objects.all().filter(ordered=True, status='Pending')
+    pending_orders = Order.objects.all().filter(ordered=True, status='Pending')
+    delivered_orders = Order.objects.all().filter(ordered=True, status='Delivered')
+    out_orders = Order.objects.all().filter(ordered=True, status='Out for delivery')
+    cancled_orders = Order.objects.all().filter(ordered=True, status='Canceled')
     context = {
-        "order": orders
+        "pending_orders": pending_orders,
+        "delivered_orders": delivered_orders,
+        "out_orders": out_orders,
+        "cancled_orders": cancled_orders,
     }
 
     return render(request, 'orders/order_preview.html', context)

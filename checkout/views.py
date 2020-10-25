@@ -96,10 +96,19 @@ def charge(request):
 def oderView(request):
 
     try:
-        orders = Order.objects.filter(
-            customer=request.user.customer, ordered=True)
+        pending_orders = Order.objects.all().filter(
+            customer=request.user.customer, ordered=True, status='Pending')
+        delivered_orders = Order.objects.all().filter(
+            customer=request.user.customer, ordered=True, status='Delivered')
+        out_orders = Order.objects.all().filter(customer=request.user.customer,
+                                                ordered=True, status='Out for delivery')
+        cancled_orders = Order.objects.all().filter(
+            customer=request.user.customer, ordered=True, status='Canceled')
         context = {
-            "orders": orders
+            "pending_orders": pending_orders,
+            "delivered_orders": delivered_orders,
+            "out_orders": out_orders,
+            "cancled_orders": cancled_orders,
         }
     except:
         messages.warning(request, "You do not have an active order")
