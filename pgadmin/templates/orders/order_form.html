@@ -1,0 +1,52 @@
+{% extends "pgadmin.html" %} {% block admin%} {% load crispy_forms_tags %}
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-1">
+    <!-- Heading -->
+    <div class="card mb-4 wow fadeIn">
+      <!--Card content-->
+      <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">
+          <span>Update Status</span>
+        </h4>
+    </div>
+    <!-- Heading -->
+
+    <div class="row wow fadeIn">
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <form action="" method="post" autocomplete="off">
+              {% csrf_token %} {{form.status|as_crispy_field}}
+
+              <div class="row">
+                <div class="col-md-8">
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-block btn-lg"
+                  >
+                    <i class="fas fa-database"></i> Save
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <a
+                    href="{% url 'ordersadmin' %}"
+                    class="btn btn-secondary btn-block btn-lg"
+                  >
+                    <i class="fas fa-stream"></i> Back to Orders
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+    </div>
+  </div>
+</main>
+
+{% endblock %}

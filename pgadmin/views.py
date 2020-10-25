@@ -81,4 +81,25 @@ def orderViewAdmin(request):
     context = {
         "order": orders
     }
+
     return render(request, 'orders/order_preview.html', context)
+
+
+def orderForm(request, id=0):
+
+    if request.method == "GET":
+        if id == 0:
+            form = OrderStatusForm()
+        else:
+            order = Order.objects.get(id=id)
+            form = OrderStatusForm(instance=order)
+        return render(request, "orders/order_form.html", {'form': form})
+    else:
+        if id == 0:
+            form = OrderStatusForm(request.POST)
+        else:
+            order = Order.objects.get(id=id)
+            form = OrderStatusForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+        return redirect('ordersadmin')

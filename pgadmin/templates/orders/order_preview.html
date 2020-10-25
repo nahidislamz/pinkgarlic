@@ -39,8 +39,8 @@
                 <tr>
                   <th>#</th>
                   <th>Ordered Item</th>
-                  <th>Status</th>
                   <th>Ordered By</th>
+                  <th>Status</th>
                 </tr>
               </thead>
 
@@ -55,13 +55,16 @@
                   </td>
 
                   <td>
-                    <span class="badge badge-primary p-2">{{i.status}}</span>
+                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
+                    <em> {{i.customer.phone}} </em>
                   </td>
-                  <td>{{i.customer.first_name}} {{i.customer.last_name}}</td>
+                  <td>
+                    <span class="badge badge-primary p-2">{{i.status}} </span>
+                  </td>
                   <td>
                     <a
                       class="btn btn-secondary btn-sm p-1 px-2"
-                      href="{% url 'menu_update' i.id%}"
+                      href="{% url 'order_update' i.id%}"
                       ><i class="fas fa-edit"></i
                     ></a>
                   </td>

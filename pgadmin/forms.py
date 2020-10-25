@@ -1,5 +1,6 @@
 from django import forms
 from menus.models import Menu, Category
+from cart.models import Order
 
 
 class MenuForm(forms.ModelForm):
@@ -25,3 +26,14 @@ class CategoryForm(forms.ModelForm):
         labels = {
             'category': 'Category Name',
         }
+
+
+class OrderStatusForm(forms.ModelForm):
+
+    class Meta:
+        model = Order
+        fields = ('status',)
+
+    def __init__(self, *args, **kwargs):
+        super(OrderStatusForm, self).__init__(*args, **kwargs)
+        self.fields['status'].empty_label = "update status"

@@ -20,5 +20,6 @@ urlpatterns = [
 
     # Order Section
     path('orders/', orderViewAdmin, name='ordersadmin'),
+    path('orders/<int:id>', orderForm, name='order_update'),
 
 ]
