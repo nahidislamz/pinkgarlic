@@ -1,5 +1,7 @@
 
-##<div align="center" style="color:#ca3a67;"> Project 300</div>
+<div align="center" style="color:#ca3a67;"> 
+<h1>Project 300</h1>
+</div>
 
 <center>
 
@@ -15,7 +17,7 @@
 
 </center>
 
-###<div style="color:#ca3a67;"> Platform & Tools</div>
+<div style="color:#ca3a67;"> <h3>Platform & Tools</h3></div>
 All the technologies that will be used to develop the system are open-sourced.
 Such as :-
 <center>
