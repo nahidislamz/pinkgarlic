@@ -1,0 +1,69 @@
+{% extends "pgadmin.html" %} {%block admin%} {% load static %}
+<style>
+  th,
+  td {
+    font-size: 5px;
+  }
+</style>
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-1">
+    <!-- Heading -->
+    <div class="card mb-4 wow fadeIn">
+      <!--Card content-->
+      <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">
+          <span>Customer Details</span>
+        </h4>
+      </div>
+    </div>
+
+    {% for i in customer %}
+    <div class="card">
+      <!--Header-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-body text-center">
+            <img
+              src="{{ i.profile_pic.url }}"
+              width="150"
+              class="text-center rounded-circle img-responsive img-fluid"
+              alt="Avatar photo"
+            />
+          </div>
+
+          <!--Body-->
+          <div class="card-body text-center mb-1">
+            <div class="text-center mt-4">
+              <a href="tel:{{i.phone}}" class="btn btn-success">
+                <i class="fas fa-phone mr-2"> call now</i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-5">
+          <div class="text-left">
+            <h2>Address</h2>
+          </div>
+
+          <!--Body-->
+          {% for a in address %}
+          <div class="text-left mb-1">
+            <h5 class="mt-1 mb-2">{{i.first_name}} {{i.last_name}}</h5>
+            <h6 class="mt-1 mb-2">{{i.email}}</h6>
+            <h5 class="mt-1 mb-2">{{a.address}}</h5>
+            <h6 class="mt-1 mb-2">{{a.phone}}</h6>
+            <h6 class="mt-1 mb-2">{{a.city}}</h6>
+            <h6 class="mt-1 mb-2">Zip-Code: {{a.zipcode}}</h6>
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!--card-->
+</main>
+{%endblock admin%}

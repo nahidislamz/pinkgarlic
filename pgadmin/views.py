@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from menus.models import Menu, Category
 from accounts.models import Customer
 from cart.models import Order
+from checkout.models import BillingAddress
 from .forms import *
 # Create your views here.
 
@@ -82,7 +83,6 @@ def customerView(request):
 
 
 def orderViewAdmin(request):
-
     pending_orders = Order.objects.all().filter(ordered=True, status='Pending')
     delivered_orders = Order.objects.all().filter(ordered=True, status='Delivered')
     out_orders = Order.objects.all().filter(ordered=True, status='Out for delivery')
@@ -95,6 +95,16 @@ def orderViewAdmin(request):
     }
 
     return render(request, 'orders/order_preview.html', context)
+
+
+def customerViewAdmin(request, id):
+    customer = Customer.objects.all().filter(id=id)
+    address = BillingAddress.objects.all().filter(customer_id=id)
+    context = {
+        'customer': customer,
+        'address': address
+    }
+    return render(request, 'orders/customer_preview.html', context)
 
 
 def orderForm(request, id=0):
