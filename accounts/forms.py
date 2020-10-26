@@ -8,3 +8,10 @@ class CustomerForm(ModelForm):
         model = Customer
         fields = '__all__'
         exclude = ['user']
+        labels = {
+            'first_name': '',
+            'last_name': '',
+            'email': '',
+            'phone': '',
+            'profile_pic': '',
+        }

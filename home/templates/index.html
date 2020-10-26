@@ -108,4 +108,120 @@
     </div>
   </div>
 </section>
+
+<section id="contact" class="contact">
+  <h1 class="h1-responsive font-weight-bold text-center mt-4">Contact Us</h1>
+  <!--Section description-->
+  <p class="text-center w-responsive mx-auto mb-0 p-2">
+    Do you have any questions? Please do not hesitate to contact us directly
+  </p>
+
+  <div style="padding: 50px" class="row">
+    <div class="card col-md-4 mb-md-0 mb-5 pt-4">
+      <form id="form" name="form" method="POST">
+        <!--Grid row-->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <input
+                type="text"
+                id="from_name"
+                name="from_name"
+                class="form-control"
+              />
+              <label for="from_name" class="">Your name</label>
+            </div>
+          </div>
+          <input type="text" name="to_name" id="to_name" hidden />
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <input
+                type="text"
+                id="reply_to"
+                name="reply_to"
+                class="form-control"
+              />
+              <label for="reply_to" class="">Your email</label>
+            </div>
+          </div>
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form">
+              <textarea
+                type="text"
+                id="message"
+                name="message"
+                rows="2"
+                class="form-control md-textarea"
+              ></textarea>
+              <label for="message">Your message</label>
+            </div>
+          </div>
+        </div>
+        <!--Grid row-->
+
+        <div class="text-center text-md-center">
+          <input
+            id="button"
+            class="btn btn-large btn-pink"
+            type="submit"
+            value="Send"
+          />
+        </div>
+      </form>
+    </div>
+    <style>
+      .card {
+        background-color: #dfdfdf;
+      }
+    </style>
+    <!--Google map-->
+    <div class="card col-md-4 text-center p-0">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9958.315170252039!2d0.035307!3d51.392419000000004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8aa5763a58271%3A0xb98451ba0fb07fbe!2sPink%20Garlic!5e0!3m2!1sen!2sus!4v1603724222650!5m2!1sen!2sus"
+        width="430"
+        height="370"
+        frameborder="0"
+        style="border: 0"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></iframe>
+    </div>
+    <!--Google Maps-->
+    <div class="card col-md-4 text-center">
+      <ul class="list-unstyled mb-0 p-4">
+        <li>
+          <i class="fas fa-map-marker-alt fa-2x"></i>
+          <p>32 Chatterton Road, Bromley, BR29QN</p>
+        </li>
+
+        <li>
+          <i class="fas fa-phone mt-4 fa-2x"></i>
+          <p>
+            <a href="tel:+442084603320"
+              ><span class="link">+44 208 4603 320</span></a
+            >
+          </p>
+        </li>
+
+        <li>
+          <i class="fas fa-envelope mt-4 fa-2x"></i>
+          <p>
+            <a class="nav-link" href="mailto:nahidislamz@outlook.com"
+              >pinkgarlic2020@gmail.com</a
+            >
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!--Section: Contact v.2-->
+</section>
 {%endblock content%}

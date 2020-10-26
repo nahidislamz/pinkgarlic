@@ -1,34 +1,7 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %} {% block title %}{% load crispy_forms_tags %}
 <title>Profile</title>
 {% endblock title %} {% block content %}
 <div class="animated fadeInDown login card">
-  <style>
-    input[type="text"],
-    input[type="email"] {
-      margin: 0%;
-      padding: 0;
-      border: none;
-      text-align: left;
-      left: 0;
-      width: 95%;
-      background-color: transparent;
-    }
-    input[type="text"],
-    input[type="email"]:focus {
-      border: none;
-      outline: none;
-      background-color: transparent;
-    }
-    input[type="file"] {
-      outline: none;
-      border: 1px solid #afafaf;
-      border-radius: 4px;
-      background: #ffffff;
-      color: rgb(117, 117, 117);
-      width: 95%;
-      text-align: center;
-    }
-  </style>
   <form
     class="text-center border border-light p-5"
     method="POST"
@@ -38,25 +11,26 @@
     <img
       src="{{request.user.customer.profile_pic.url}}"
       alt="avatar"
-      class="rounded-circle img-responsive"
+      style="object-fit: cover"
+      class="rounded-circle img-fluid"
     />
-    <div class="form-row mb-4">
+    <div class="row mb-4">
       <div class="col">
         <!-- First name -->
-        <div id="" class="form-control text-left">{{form.first_name}}</div>
+        <div id="" class="text-left">{{form.first_name|as_crispy_field}}</div>
       </div>
       <div class="col">
-        <div id="" class="form-control text-left">{{form.last_name}}</div>
+        <div id="" class="text-left">{{form.last_name|as_crispy_field}}</div>
       </div>
     </div>
 
     <!-- Email  -->
-    <div id="" class="mb-4 form-control text-left">{{form.email}}</div>
+    <div id="" class="mb-4 text-left">{{form.email|as_crispy_field}}</div>
     <!-- Phone number -->
-    <div id="" class="mb-4 form-control text-left">{{form.phone}}</div>
+    <div id="" class="mb-4 text-left">{{form.phone|as_crispy_field}}</div>
 
-    <div class="mt-4 input-group">
-      <div class="text-center">{{form.profile_pic}}</div>
+    <div class="mt-4">
+      <div class="text-center">{{form.profile_pic|as_crispy_field}}</div>
     </div>
 
     <input class="btn btn-pink my-4 btn-block" value="Update" type="submit" />

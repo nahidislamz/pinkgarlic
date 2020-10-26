@@ -77,8 +77,8 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Ordered Item</th>
-                  <th>Ordered By</th>
+                  <th>Item</th>
+                  <th>By</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -94,11 +94,15 @@
                   </td>
 
                   <td>
-                    <p>{{i.customer.first_name}} {{i.customer.last_name}}</p>
-                    <em> {{i.customer.phone}} </em>
+                    <a
+                      href="{% url 'customer_identity' i.customer.id %}"
+                      class="text-primary font-weight-bold cyan-lighter-hover lighten-4"
+                    >
+                      {{i.customer.user}}
+                    </a>
                   </td>
                   <td>
-                    <span class="badge badge-warning p-2">{{i.status}} </span>
+                    <span class="badge badge-primary p-2">{{i.status}} </span>
                   </td>
                   <td>
                     <a
