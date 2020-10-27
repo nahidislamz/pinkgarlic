@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Comfortaa", cursive;
+  scroll-behavior: smooth;
 }
 body {
   padding-top: 70px;
@@ -60,8 +61,13 @@ section {
 
 /*about section*/
 .about,
-.menus {
+.menus,
+.service,
+.contact {
   padding: 50px;
+}
+.service .card p {
+  font-size: 14px;
 }
 section h1,
 section h2 {

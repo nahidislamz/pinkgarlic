@@ -16,9 +16,9 @@
     <header>
       <!--Navbar -->
       <nav
-        class="mb-0 fixed-top scrolling-navbar navbar navbar-expand-lg navbar-dark pink darken-1"
+        class="mb-0 fixed-top navbar navbar-expand-lg navbar-dark pink darken-2"
       >
-        <a class="animated delay-2s wobble navbar-brand" href="#"
+        <a class="animated delay-2s wobble navbar-brand" href="{% url 'home' %}"
           >Pink Garlic</a
         >
         <button
@@ -34,20 +34,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Home </a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Gallary</a>
+              <a class="nav-link" href="{% url 'home' %}#service">Services</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'menu' %}">Menus</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="{% url 'home' %}#contact">Contact</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">

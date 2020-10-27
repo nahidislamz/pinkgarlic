@@ -107,7 +107,7 @@ def customerViewAdmin(request, id):
     return render(request, 'orders/customer_preview.html', context)
 
 
-def orderForm(request, id=0):
+def orderForm(request, id=id):
 
     if request.method == "GET":
         if id == 0:
