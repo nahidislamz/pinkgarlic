@@ -12,7 +12,8 @@
     {{message}}
   </div>
   {% endfor %}
-  <div class="card mb-5 mr-5 ml-5 pb-1">
+
+  <div class="card mb-5 mr-5 ml-5 pb-1 bg-light">
     <div class="card-body">
       <!-- Shopping Cart table -->
       <div class="table-responsive">
@@ -60,7 +61,7 @@
                   </a>
                 </div>
               </td>
-              <td class="font-weight-bold">${{ i.getCart_total }}</td>
+              <td class="font-weight-bold">£ {{ i.getCart_total }}</td>
               <td class="m-0">
                 <button
                   style="border-radius: 20px"
@@ -76,15 +77,15 @@
               <th scope="row"></th>
               <td colspan="2"><strong>Total</strong></td>
               <td class="font-weight-bold">
-                {{order.getOrder_total| floatformat:2}}
+                £ {{order.getOrder_total| floatformat:2}}
               </td>
             </tr>
             <tr>
               <th scope="row"></th>
               <td colspan="3" class="text-right">
                 <a href="{% url 'menu' %}" class="btn btn-warning mr-4"
-                  >Go Back To Menu</a
-                >
+                  >Go Back To Menu
+                </a>
                 <a
                   class="btn btn-success mr-4 animated heartBeat slow delay-5s"
                   href="{% url 'checkout' %}"

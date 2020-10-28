@@ -1,47 +1,49 @@
 {% extends 'base.html' %} {% block title %}{% load crispy_forms_tags %}
 <title>Profile</title>
 {% endblock title %} {% block content %}
-<div class="animated fadeInDown login card">
-  <form
-    class="text-center border border-light p-5"
-    method="POST"
-    enctype="multipart/form-data"
-  >
-    {% load static %} {% csrf_token %}
-    <img
-      src="{{request.user.customer.profile_pic.url}}"
-      alt="avatar"
-      style="object-fit: cover"
-      class="rounded-circle img-fluid"
-    />
-    <div class="row">
-      <div class="col">
-        <!-- First name -->
-        <div class="text-left">{{form.first_name|as_crispy_field}}</div>
+<section class="account">
+  <div class="animated fadeInDown login card bg-light">
+    <form
+      class="text-center border border-light p-5"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% load static %} {% csrf_token %}
+      <img
+        src="{{request.user.customer.profile_pic.url}}"
+        alt="avatar"
+        style="object-fit: cover"
+        class="rounded-circle img-fluid"
+      />
+      <div class="row">
+        <div class="col">
+          <!-- First name -->
+          <div class="text-left">{{form.first_name|as_crispy_field}}</div>
+        </div>
+        <div class="col">
+          <div class="text-left">{{form.last_name|as_crispy_field}}</div>
+        </div>
       </div>
-      <div class="col">
-        <div class="text-left">{{form.last_name|as_crispy_field}}</div>
+
+      <!-- Email  -->
+      <div class="text-left">{{form.email|as_crispy_field}}</div>
+      <!-- Phone number -->
+      <div class="text-left">{{form.phone|as_crispy_field}}</div>
+
+      <div class="mt-2">
+        <div class="text-center text-dm">
+          {{form.profile_pic|as_crispy_field}}
+        </div>
       </div>
-    </div>
 
-    <!-- Email  -->
-    <div class="text-left">{{form.email|as_crispy_field}}</div>
-    <!-- Phone number -->
-    <div class="text-left">{{form.phone|as_crispy_field}}</div>
-
-    <div class="mt-2">
-      <div class="text-center text-dm">
-        {{form.profile_pic|as_crispy_field}}
-      </div>
-    </div>
-
-    <input
-      class="btn btn-success mt-2 btn-block"
-      value="Update"
-      type="submit"
-    />
-  </form>
-</div>
+      <input
+        class="btn btn-success mt-2 btn-block"
+        value="Update"
+        type="submit"
+      />
+    </form>
+  </div>
+</section>
 <script>
   var form_fields = document.getElementsByTagName("input");
   form_fields[3].readOnly = true;
