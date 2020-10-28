@@ -2,18 +2,12 @@
 <main class="pt-5 mx-lg-5">
   <div class="container-fluid mt-1">
     <!-- Heading -->
-    <div class="card mb-4 wow fadeIn">
+    <div class="card mt-5 mb-4 wow fadeIn">
       <!--Card content-->
       <div class="card-body d-sm-flex justify-content-between">
         <h4 class="mb-2 mb-sm-0 pt-1">
           <span>Add New/Edit</span>
         </h4>
-
-        <a
-          href="{% url 'addmenu' %}"
-          class="animated shake delay-2s btn btn-warning btn-sm my-1"
-          >Add New Item</a
-        >
       </div>
     </div>
     <!-- Heading -->
@@ -34,7 +28,7 @@
               </div>
 
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 mb-2">
                   <button
                     type="submit"
                     class="btn btn-success btn-block btn-lg"
@@ -42,7 +36,7 @@
                     <i class="fas fa-database"></i> Save
                   </button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-2">
                   <a
                     href="{% url 'menuadmin' %}"
                     class="btn btn-secondary btn-block btn-lg"

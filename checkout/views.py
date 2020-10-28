@@ -3,6 +3,7 @@ from .models import BillingAddress
 from .form import BillingForm
 from cart.models import Order, Cart
 import stripe
+from django.contrib import messages
 from django.conf import settings
 from django.utils.crypto import get_random_string
 

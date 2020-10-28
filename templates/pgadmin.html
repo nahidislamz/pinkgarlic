@@ -28,11 +28,7 @@
             width: 100%;
             position: absolute;
         }
-    </style>
-</head>
 
-<body>
-    <style>
         .navbar .hiddenitem .hide_ul li{
             display: none; 
         }
@@ -76,15 +72,23 @@
             }
             .navbar .hiddenitem .hide_ul li{
             display: block; 
+
+            .navbar{
+                padding-bottom: 10px;
+            }
         }
         }
     </style>
+</head>
+
+<body>
+
     <header>
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color darken-3 scrolling-navbar">
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="#" target="_blank">
+                <a class="navbar-brand waves-effect" href="{% url 'pgadmin' %}" target="_blank">
                     <strong class="text-light">Pink Garlic Admin</strong>
                 </a>
 
@@ -104,7 +108,7 @@
                                 Accounts</a>
                         </li>
                        <li class="nav-item">
-                        <a href="#" class="nav-link text-white waves-effect">
+                        <a href="{% url 'ordersadmin' %}" class="nav-link text-white waves-effect">
                         </i>Orders</a>
                        </li>
 
@@ -113,7 +117,7 @@
                            Menus</a> 
                        </li>
                        <li class="nav-item">
-                            <a href="#" class="nav-link text-white waves-effect">
+                            <a href="{% url 'categoryadmin' %}" class="nav-link text-white waves-effect">
                             Category</a>
                        </li>
                        <li class="nav-item">
