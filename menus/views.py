@@ -1,8 +1,13 @@
 from django.shortcuts import render
-from .models import Menu
+from .models import Menu, Category
 # Create your views here.
 
 
 def menuPage(request):
+    category = Category.objects.all()
     menus = Menu.objects.all()
-    return render(request, 'menu.html', {'menus': menus})
+    context = {
+        'menus': menus,
+        'category': category
+    }
+    return render(request, 'menu.html', context)

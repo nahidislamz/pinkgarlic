@@ -14,7 +14,7 @@ class Category(models.Model):
 class Menu(models.Model):
 
     title = models.CharField(max_length=200, null=True)
-    description = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=1000, null=True)
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
     price = models.FloatField('£', null=True)
 
