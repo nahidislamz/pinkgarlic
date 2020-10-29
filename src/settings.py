@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
     'pgadmin.apps.PgadminConfig',
-    'crispy_forms',
+    'crispy_forms', 'django_filters',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 

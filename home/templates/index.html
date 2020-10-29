@@ -170,6 +170,85 @@
     <!-- Grid column -->
   </div>
 </section>
+<section id="menu" class="menus">
+  <h1 class="h1-responsive font-weight-bold text-center my-4">Menus</h1>
+  {% for message in messages%}
+  <div class="alert alert-secondary" role="alert">{{message}}</div>
+  {% endfor %}
+
+  <div class="card bg-light">
+    {% if category %} {% for c in category%}
+    <div
+      class="panel-group"
+      id="accordion"
+      role="tablist"
+      aria-multiselectable="true"
+    >
+      <div class="panel border-bottom border-dark">
+        <div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
+          <h3 class="display-2 panel-title">
+            <a
+              class="font-weight-bold"
+              role="button"
+              data-toggle="collapse"
+              data-parent="#accordion"
+              href="#collapse{{forloop.counter}}"
+              aria-expanded="true"
+              aria-controls="collapse{{forloop.counter}}"
+            >
+              {{c.category}} <i class="fas fa-chevron-circle-down"></i>
+            </a>
+          </h3>
+        </div>
+        <div
+          id="collapse{{forloop.counter}}"
+          class="panel-collapse collapse in"
+          role="tabpanel"
+          aria-labelledby="heading{{forloop.counter}}"
+        >
+          <div class="panel-body">
+            <table id="tablePreview" class="table">
+              <tbody>
+                {% for i in menus %}{% if c.id == i.category_id %}
+                <tr>
+                  <td>
+                    <h6>{{i.title}}</h6>
+                    <p class="grey-text">{{i.description}}</p>
+                  </td>
+                  <td>£{{i.price}}</td>
+                  <td>
+                    {% if user.is_authenticated %}
+                    <a
+                      href="{% url 'cart' i.id %}"
+                      class="btn btn-warning px-2 p-1"
+                    >
+                      <i
+                        style="font-size: 18px"
+                        class="fas fa-cart-plus"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login'%}" class="btn btn-danger px-2 p-1">
+                      <i
+                        style="font-size: 18px"
+                        class="fas fa-cart-plus"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endif %} {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}{% endif %}
+  </div>
+</section>
 <section id="contact" class="contact">
   <h1 class="h1-responsive font-weight-bold text-center mt-4">Contact Us</h1>
   <!--Section description-->

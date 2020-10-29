@@ -4,22 +4,43 @@ from accounts.models import Customer
 from cart.models import Order
 from checkout.models import BillingAddress
 from .forms import *
+from .filters import *
 # Create your views here.
 
 
 def adminView(request):
-    pending_orders = Order.objects.all().filter(ordered=True, status='Pending')
+
+    orders = Order.objects.all().filter(ordered=True)
+    total_orders = orders.count()
+    out_orders = Order.objects.all().filter(
+        ordered=True, status='Out for delivery')
+    for_delivery = out_orders.count()
+    pending_orders = Order.objects.all().filter(
+        ordered=True, status='Pending')
+    pending = pending_orders.count()
+
     customer = Customer.objects.all()
     context = {
+        'customer': customer,
+        'total_orders': total_orders,
+        "pending": pending,
+        'for_delivery': for_delivery,
         "pending_orders": pending_orders,
-        'customer': customer
+
+
     }
     return render(request, 'dashboard.html', context)
 
 
 def menuAdminView(request):
     menu = Menu.objects.all()
-    return render(request, 'menu/menu_admin.html', {'menu': menu})
+    mFilter = MenuFilter(request.GET, queryset=menu)
+    menu = mFilter.qs
+    context = {
+        'menu': menu,
+        'mFilter': mFilter
+    }
+    return render(request, 'menu/menu_admin.html', context)
 
 
 def menu_form(request, id=0):
@@ -49,7 +70,13 @@ def menu_delete(request, id):
 
 def categoryView(request):
     category = Category.objects.all()
-    return render(request, 'category/category_admin.html', {'category': category})
+    mFilter = CategoryFilter(request.GET, queryset=category)
+    category = mFilter.qs
+    context = {
+        'category': category,
+        'mFilter': mFilter
+    }
+    return render(request, 'category/category_admin.html', context)
 
 
 def category_form(request, id=0):
@@ -79,19 +106,24 @@ def category_delete(request, id):
 
 def customerView(request):
     customer = Customer.objects.all()
-    return render(request, 'accounts/customers.html', {'customer': customer})
+    mFilter = CustomerFilter(request.GET, queryset=customer)
+    customer = mFilter.qs
+    context = {
+        'customer': customer,
+        'mFilter': mFilter
+    }
+    return render(request, 'accounts/customers.html', context)
 
 
 def orderViewAdmin(request):
-    pending_orders = Order.objects.all().filter(ordered=True, status='Pending')
-    delivered_orders = Order.objects.all().filter(ordered=True, status='Delivered')
-    out_orders = Order.objects.all().filter(ordered=True, status='Out for delivery')
-    cancled_orders = Order.objects.all().filter(ordered=True, status='Canceled')
+
+    orders = Order.objects.all().filter(ordered=True)
+
+    mFilter = OrderFilter(request.GET, queryset=orders)
+    orders = mFilter.qs
     context = {
-        "pending_orders": pending_orders,
-        "delivered_orders": delivered_orders,
-        "out_orders": out_orders,
-        "cancled_orders": cancled_orders,
+        'orders': orders,
+        'mFilter': mFilter
     }
 
     return render(request, 'orders/order_preview.html', context)

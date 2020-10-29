@@ -1,4 +1,4 @@
-{% extends "pgadmin.html" %} {% block admin%}
+{% extends "pgadmin.html" %} {% block admin%}{% load crispy_forms_tags %}
 
 <main class="pt-5 mx-lg-5">
   <div class="container-fluid mt-1">
@@ -10,23 +10,24 @@
           <span>Category</span>
         </h4>
 
-        <form class="d-flex justify-content-center">
+        <form method="GET">
           <!-- Default input -->
-          <input
-            type="search"
-            placeholder="Type your query"
-            aria-label="Search"
-            class="form-control"
-          />
-          <button class="btn btn-mdb-color btn-sm my-0" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
+          <div class="row">
+            <div class="col-md-8">
+              {{mFilter.form.category | as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-mdb-color btn-sm" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+              <a
+                href="{% url 'addcategory' %}"
+                class="animated shake delay-2s btn btn-warning btn-sm"
+                ><i class="fas fa-plus-circle"></i
+              ></a>
+            </div>
+          </div>
         </form>
-        <a
-          href="{% url 'addcategory' %}"
-          class="animated shake delay-2s btn btn-warning btn-sm my-1"
-          >Add New Item</a
-        >
       </div>
     </div>
     <!-- Heading -->

@@ -9,22 +9,50 @@
         <h4 class="mb-2 mb-sm-0 pt-1">
           <span>Dashboard</span>
         </h4>
-
-        <form class="d-flex justify-content-center">
-          <!-- Default input -->
-          <input
-            type="search"
-            placeholder="Type your query"
-            aria-label="Search"
-            class="form-control"
-          />
-          <button class="btn btn-mdb-color btn-sm my-0 p" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
       </div>
     </div>
     <!-- Heading -->
+    <div class="row p-2 mb-2">
+      <!-- Grid column -->
+      <div class="col-md-4 mb-4">
+        <!--Card Primary-->
+        <div class="card h-100 text-center z-depth-2">
+          <div class="card-body">
+            <h4 class="font-weight-bold mt-2 mb-3">
+              <strong>Total Orders</strong>
+              <i class="fas fa-sort-numeric-up"></i>
+            </h4>
+            <h2 class="green-text font-weight-bold">{{total_orders}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 darken-4 text-center z-depth-2">
+          <div class="card-body">
+            <h4 class="font-weight-bold mt-2 mb-3">
+              <strong>Pending</strong> <i class="fas fa-upload"></i>
+            </h4>
+            <h2 class="blue-text font-weight-bold">{{pending}}</h2>
+          </div>
+        </div>
+        <!--/.Card Primary-->
+      </div>
+      <!-- Grid column -->
+      <!-- Grid column -->
+      <div class="col-md-4 mb-4">
+        <!--Card Primary-->
+        <div class="card h-100 darken-4 text-center z-depth-2">
+          <div class="card-body">
+            <h4 class="font-weight-bold mt-2 mb-3">
+              <strong>Out For Delivery</strong> <i class="fas fa-truck"></i>
+            </h4>
+            <h2 class="orange-text font-weight-bold">{{for_delivery}}</h2>
+          </div>
+        </div>
+        <!--/.Card Primary-->
+      </div>
+      <!-- Grid column -->
+    </div>
 
     <div class="row wow fadeIn">
       <!--Grid column-->

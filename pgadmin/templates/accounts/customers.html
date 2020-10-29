@@ -1,4 +1,4 @@
-{% extends "pgadmin.html" %} {% block admin%}
+{% extends "pgadmin.html" %} {% block admin%}{% load crispy_forms_tags %}
 <style>
   .containeer .row .card table tr {
     font-size: 11px;
@@ -14,17 +14,21 @@
           <span>Customers</span>
         </h4>
 
-        <form class="d-flex justify-content-center">
+        <form method="GET">
           <!-- Default input -->
-          <input
-            type="search"
-            placeholder="Type your query"
-            aria-label="Search"
-            class="form-control"
-          />
-          <button class="btn btn-mdb-color btn-sm my-0" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
+          <div class="row">
+            <div class="col-md-5">
+              {{mFilter.form.email | as_crispy_field }}
+            </div>
+            <div class="col-md-5">
+              {{mFilter.form.phone | as_crispy_field }}
+            </div>
+            <div class="col-md-2 mt-4">
+              <button class="btn btn-mdb-color btn-sm px-3 p-2" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

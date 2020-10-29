@@ -45,7 +45,7 @@
             <table id="tablePreview" class="table">
               <tbody>
                 {% for i in menus %}{% if c.id == i.category_id %}
-                <tr>
+                <tr id="{{ i.id }}">
                   <td>
                     <h6>{{i.title}}</h6>
                     <p class="grey-text">{{i.description}}</p>
