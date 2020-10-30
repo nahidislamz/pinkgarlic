@@ -45,12 +45,24 @@
               </div>
               <!--Grid column-->
             </div>
-            <a
-              class="btn btn-light btn-lg btn-block mt-4"
-              href="{% url 'payment' %}"
-            >
-              Continue to checkout
-            </a>
+            <div class="row">
+              <div class="col-md-6">
+                <a
+                  class="btn btn-danger btn-md btn-block mt-4"
+                  href="{% url 'address_update' savedAddress.id %}"
+                >
+                  Update Address
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a
+                  class="btn btn-success btn-md btn-block mt-4"
+                  href="{% url 'payment' %}"
+                >
+                  Continue to checkout
+                </a>
+              </div>
+            </div>
           </form>
         </div>
         <!--/.Card-->

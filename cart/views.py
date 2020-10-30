@@ -3,10 +3,11 @@ from .models import Cart, Order
 from accounts.models import Customer
 from menus.models import Menu
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@login_required
 def cartView(request):
 
     customer = request.user.customer
@@ -21,6 +22,7 @@ def cartView(request):
         return render(request, 'cart_empty.html')
 
 
+@login_required
 def add_to_cart(request, id):
     item = get_object_or_404(Menu, id=id)
     order_item, created = Cart.objects.get_or_create(
@@ -52,6 +54,7 @@ def add_to_cart(request, id):
         return redirect("menu")
 
 
+@login_required
 def increaseItem(request, id):
 
     item = get_object_or_404(Menu, id=id)
@@ -81,6 +84,7 @@ def increaseItem(request, id):
         return redirect("cart")
 
 
+@login_required
 def decreaseItem(request, id):
     item = get_object_or_404(Menu, id=id)
     order_qs = Order.objects.filter(

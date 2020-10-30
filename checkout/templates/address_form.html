@@ -1,0 +1,38 @@
+{% extends "base.html" %} {%block title%}
+<title>Checkout</title>
+{%endblock %} {%block content%} {% load static %}{% load crispy_forms_tags %}
+<section class="checkout p-4">
+  <div class="pt-4 container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="mt-4 pt-4 h2 text-center">Address Form</h2>
+
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Update Your Address</span>
+        </h4>
+        <div class="card">
+          <!--Card content-->
+          <form class="card-body mt-4" method="POST">
+            {% csrf_token %} {{form.address|as_crispy_field}}
+            {{form.phone|as_crispy_field}}
+            <div class="row">
+              <div class="col-lg-6 col-md-6 mb-2 pl-3">
+                {{form.city|as_crispy_field}}
+              </div>
+              <div class="col-lg-6 col-md-6 mb-2 pl-3">
+                {{form.zipcode|as_crispy_field}}
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger btn-lg mt-2">
+              Update Address
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock content%}

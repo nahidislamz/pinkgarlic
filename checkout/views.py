@@ -6,8 +6,10 @@ import stripe
 from django.contrib import messages
 from django.conf import settings
 from django.utils.crypto import get_random_string
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def checkout(request):
 
     form = BillingForm
@@ -53,6 +55,7 @@ def checkout(request):
     return render(request, 'checkout_address.html', context)
 
 
+@login_required
 def payment(request):
     key = settings.STRIPE_PUBLISHABLE_KEY
     order_qs = Order.objects.filter(
@@ -69,6 +72,7 @@ def payment(request):
     return render(request, 'payment.html', {"key": key, "total": total})
 
 
+@login_required
 def charge(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     order = Order.objects.get(customer=request.user.customer, ordered=False)
@@ -94,6 +98,7 @@ def charge(request):
         return render(request, 'charge.html')
 
 
+@login_required
 def oderView(request):
 
     try:
@@ -115,3 +120,22 @@ def oderView(request):
         messages.warning(request, "You do not have an active order")
         return redirect('menu')
     return render(request, 'ordered.html', context)
+
+
+def address_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = BillingForm()
+        else:
+            address = BillingAddress.objects.get(id=id)
+            form = BillingForm(instance=address)
+        return render(request, "address_form.html", {'form': form})
+    else:
+        if id == 0:
+            form = BillingForm(request.POST)
+        else:
+            address = BillingAddress.objects.get(id=id)
+            form = BillingForm(request.POST, instance=address)
+        if form.is_valid():
+            form.save()
+        return redirect('checkout')

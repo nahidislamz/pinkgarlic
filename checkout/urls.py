@@ -7,4 +7,5 @@ urlpatterns = [
     path('payment/', payment, name="payment"),
     path('charge/', charge, name="charge"),
     path('orders/', oderView, name="orders"),
+    path('address/<int:id>', address_form, name="address_update")
 ]

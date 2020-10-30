@@ -4,10 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group, User, auth
-
+from .decorators import *
 # Create your views here.
 
 
+@unauthenticated_user
 def registerPage(request):
 
     if request.method == 'POST':
@@ -41,6 +42,7 @@ def registerPage(request):
         return render(request, 'register.html')
 
 
+@unauthenticated_user
 def loginPage(request):
 
     if request.method == 'POST':
