@@ -86,7 +86,6 @@ def charge(request):
         if charge.status == "succeeded":
             orderId = get_random_string(
                 length=16, allowed_chars=u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
-            print(charge.id)
             order.ordered = True
             order.paymentId = charge.id
             order.orderId = f'#{request.user.customer}{orderId}'

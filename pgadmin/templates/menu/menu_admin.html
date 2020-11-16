@@ -58,9 +58,14 @@
                 {% for i in menu%}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ i.title }}</td>
-                  <td>{{ i.description }}</td>
-                  <td>{{ i.price }}</td>
+                  <td>
+                    <p>{{ i.title }}</p>
+                    <p class="badge badge-dark p-2">{{i.category}}</p>
+                  </td>
+                  <td>
+                    <p>{{ i.description }}</p>
+                  </td>
+                  <td>£{{ i.price }}</td>
                   <td>
                     <a
                       class="btn btn-secondary btn-sm p-1 px-2"

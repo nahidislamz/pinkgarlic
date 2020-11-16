@@ -11,7 +11,7 @@ from accounts.decorators import *
 
 
 @login_required
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def adminView(request):
 
     orders = Order.objects.all().filter(ordered=True)
@@ -36,7 +36,7 @@ def adminView(request):
     return render(request, 'dashboard.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def menuAdminView(request):
     menu = Menu.objects.all()
     mFilter = MenuFilter(request.GET, queryset=menu)
@@ -48,7 +48,7 @@ def menuAdminView(request):
     return render(request, 'menu/menu_admin.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def menu_form(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -68,14 +68,14 @@ def menu_form(request, id=0):
         return redirect('menuadmin')
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def menu_delete(request, id):
     menu = Menu.objects.get(id=id)
     menu.delete()
-    return redirect('categoryadmin')
+    return redirect('menuadmin')
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def categoryView(request):
     category = Category.objects.all()
     mFilter = CategoryFilter(request.GET, queryset=category)
@@ -87,7 +87,7 @@ def categoryView(request):
     return render(request, 'category/category_admin.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def category_form(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -107,14 +107,14 @@ def category_form(request, id=0):
         return redirect('categoryadmin')
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def category_delete(request, id):
     category = Category.objects.get(id=id)
     category.delete()
     return redirect('categoryadmin')
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def customerView(request):
     customer = Customer.objects.all()
     mFilter = CustomerFilter(request.GET, queryset=customer)
@@ -126,7 +126,7 @@ def customerView(request):
     return render(request, 'accounts/customers.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def orderViewAdmin(request):
 
     orders = Order.objects.all().filter(ordered=True)
@@ -141,7 +141,7 @@ def orderViewAdmin(request):
     return render(request, 'orders/order_preview.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def customerViewAdmin(request, id):
     customer = Customer.objects.all().filter(id=id)
     address = BillingAddress.objects.all().filter(customer_id=id)
@@ -152,7 +152,7 @@ def customerViewAdmin(request, id):
     return render(request, 'orders/customer_preview.html', context)
 
 
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['Admin'])
 def orderForm(request, id=id):
 
     if request.method == "GET":
