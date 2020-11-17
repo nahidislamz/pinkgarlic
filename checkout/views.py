@@ -21,7 +21,7 @@ def checkout(request):
 
     order_items = order_qs[0].orderitems.all()
 
-    order_total = order_qs[0].getOrder_total()
+    order_total = order_qs[0].getOrder_total()+15
 
     context = {"form": form, "order_items": order_items,
                "order_total": order_total, 'cart': cart}
@@ -65,7 +65,7 @@ def payment(request):
     total = round(totalCents, 2)
     if request.method == 'POST':
         charge = stripe.Charge.create(amount=total,
-                                      currency='usd',
+                                      currency='gbp',
                                       description=order_qs,
                                       source=request.POST['stripeToken'])
 
@@ -77,10 +77,10 @@ def charge(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     order = Order.objects.get(customer=request.user.customer, ordered=False)
     order_total = order.getOrder_total()
-    totalCents = int(float(order_total * 100))
+    totalPenny = int(float(order_total * 100))
     if request.method == 'POST':
-        charge = stripe.Charge.create(amount=totalCents,
-                                      currency='usd',
+        charge = stripe.Charge.create(amount=totalPenny,
+                                      currency='gbp',
                                       description=order,
                                       source=request.POST['stripeToken'])
         if charge.status == "succeeded":
