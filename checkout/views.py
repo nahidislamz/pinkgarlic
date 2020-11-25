@@ -26,7 +26,6 @@ def checkout(request):
     context = {"form": form, "order_items": order_items,
                "order_total": order_total, 'cart': cart}
 
-    # Getting the saved saved_address
     saved_address = BillingAddress.objects.filter(
         customer=request.user.customer)
     if saved_address.exists():
@@ -61,8 +60,8 @@ def payment(request):
     order_qs = Order.objects.filter(
         customer=request.user.customer, ordered=False)
     order_total = order_qs[0].getOrder_total()
-    totalCents = float(order_total * 100)
-    total = round(totalCents, 2)
+    totalPenny = float(order_total * 100)
+    total = round(totalPenny, 2)
     if request.method == 'POST':
         charge = stripe.Charge.create(amount=total,
                                       currency='gbp',
@@ -84,11 +83,8 @@ def charge(request):
                                       description=order,
                                       source=request.POST['stripeToken'])
         if charge.status == "succeeded":
-            orderId = get_random_string(
-                length=16, allowed_chars=u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
             order.ordered = True
             order.paymentId = charge.id
-            order.orderId = f'#{request.user.customer}{orderId}'
             order.save()
             cartItems = Cart.objects.filter(customer=request.user.customer)
             for item in cartItems:
@@ -98,7 +94,7 @@ def charge(request):
 
 
 @login_required
-def oderView(request):
+def orderView(request):
 
     try:
         pending_orders = Order.objects.all().filter(
@@ -118,6 +114,7 @@ def oderView(request):
     except:
         messages.warning(request, "You do not have an active order")
         return redirect('menu')
+
     return render(request, 'ordered.html', context)
 
 

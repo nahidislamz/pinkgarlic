@@ -6,6 +6,6 @@ urlpatterns = [
     path('checkout/', checkout, name="checkout"),
     path('payment/', payment, name="payment"),
     path('charge/', charge, name="charge"),
-    path('orders/', oderView, name="orders"),
+    path('orders/', orderView, name="orders"),
     path('address/<int:id>', address_form, name="address_update")
 ]

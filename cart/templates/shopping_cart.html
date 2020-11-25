@@ -8,10 +8,10 @@
   </h1>
   {% for message in messages%}
   <div
-    class="mr-5 ml-5 alert alert-secondary animated fadeOutUpBig delay-4s"
+    class="mr-5 ml-5 btn btn-success animated fadeOutLeftBig delay-4s"
     role="alert"
   >
-    {{message}}
+    <p class="text-center">{{message}}</p>
   </div>
   {% endfor %}
 
@@ -50,28 +50,29 @@
                 <span class="qty">{{i.quantity}} </span>
                 <div class="btn-group ml-4" data-toggle="buttons">
                   <a
-                    href="{% url 'removecart' i.item.id %}"
-                    class="btn btn-sm btn-danger lighten-2 minus btn-rounded waves-effect waves-light px-2 mr-1 p-1"
+                    href="{% url 'decreaseItem' i.item.id %}"
+                    class="btn btn-sm btn-blue lighten-2 minus btn-rounded waves-effect waves-light px-2 mr-1 p-1"
                   >
                     <i class="fas fa-minus"></i
                   ></a>
                   <a
-                    href="{% url 'addcart' i.item.id%}"
-                    class="btn btn-sm btn-success btn-rounded waves-effect waves-light px-2 ml-.5 p-1"
+                    href="{% url 'increaseItem' i.item.id%}"
+                    class="btn btn-sm btn-teal btn-rounded waves-effect waves-light px-2 ml-.5 p-1"
                   >
                     <i class="fas fa-plus"></i>
                   </a>
                 </div>
               </td>
               <td class="font-weight-bold">£ {{ i.getCart_total }}</td>
+
               <td class="m-0">
-                <button
+                <a
                   style="border-radius: 20px"
-                  type="button"
-                  class="ml-4 btn btn-sm btn-dark p-1 px-2"
+                  href="{% url 'removecart' i.item.id %}"
+                  class="ml-4 btn btn-sm btn-danger p-1 px-2"
                 >
                   <i class="fas fa-times"></i>
-                </button>
+                </a>
               </td>
             </tr>
             {% endfor %}

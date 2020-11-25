@@ -3,10 +3,10 @@
 {%endblock %} {%block content%} {% load static %}
 
 <section class="section text-center">
-  <div class="card">
-    <div class="card-body animated rubberBand delay-2s">
+  <div class="mt-4 card p-4 bg-light">
+    <div class="card-body animated rubberBand delay-2s p-4">
       <img width="290" src="{%static 'images/cart_empty.png' %}" />
-      <div>
+      <div class="mb-2 mt-2">
         <a href="{% url 'menu' %}" class="btn btn-dark">View Menus</a>
       </div>
     </div>
