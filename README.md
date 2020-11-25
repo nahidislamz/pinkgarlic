@@ -50,7 +50,7 @@ Such as :-
 
 <br/>
 
-###### Installation Guide
+###### Installation Guides
 ```bash
 
   git clone https://github.com/nahidislamz/pinkgarlic.git
