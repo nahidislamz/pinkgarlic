@@ -1,6 +1,6 @@
 
 <div align="center"> 
-<h1 style="color:#cd276d;">Project 300</h1>
+<h1>Project 300</h1>
 </div>
 
 <div align="center"> 
@@ -17,7 +17,7 @@
 
 </div>
 
-<div> <h3 style="color:#cd276d;">Platform & Tools</h3>
+<div> <h3>Platform & Tools</h3>
 <p style="color:grey;">
 All the technologies that will be used to develop the system are open-sourced.
 Such as :-
@@ -44,5 +44,26 @@ Such as :-
 <br/>
 <img src="https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/>
 
+
+
+<div align="left">
+
+<br/>
+
+###### Installation Guide
+```bash
+
+  git clone https://github.com/nahidislamz/pinkgarlic.git
+  
+  cd pinkgarlic
+
+  pipenv shell
+
+  pipenv install -r requirements.txt
+
+  python manage.py runserver
+```
+<em>Note: Before your run the runserver command please make sure your mongodb server is running </em>
+</div>
 
 </div>
