@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -59,10 +59,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
+user = os.environ['USERNAME']
+password = os.environ['PASS']
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'pinkgarlic_db',
+        "CLIENT": {
+            'name': 'pinkgarlic_db',
+            'host': 'mongodb+srv://'+user+':'+password+'@pinkgarlic.gh3nx.mongodb.net/pinkgarlic_db?retryWrites=true&w=majority',
+        },
     }
 }
 
